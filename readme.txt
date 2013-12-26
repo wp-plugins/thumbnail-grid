@@ -1,0 +1,110 @@
+=== Plugin Name ===
+Contributors: nomadcoder
+Donate link: http://www.nomadcoder.com
+Tags: featured image, thumbnail grid
+Requires at least: 
+Tested up to: 3.8
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
+
+== Description ==
+
+This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
+
+This plugin is not designed to show several pages of thumbnails, rather it is designed to allow you to embed thumbnails into any page or to display a subset of thumbnails on a page. To show more thumbnails on a page than the default value Blog pages show at most, use a fixed value for posts_per_page or try setting the posts_per_page value to ’999′.
+
+Your theme must be enabled for post thumbnails.
+
+POSTS & PAGES
+
+You can use any of the parameters listed in the wordpress codex.
+Click here to see the WordPress Codex for Posts
+
+Here are some of the most common paramaters:
+
+cat = (*Use cat instead of category for posts if category does not work) category id. To view the category id, go to your post categories, edit the category and look in the browser address bar for the category id. If you don’t see it, click your mouse in the address bar.
+It should look something like this. The category id is 7:
+
+http://www.yoursite.com/wp-admin/edit-tags.php?action=edit&taxonomy=category&tag_ID=7&post_type=post
+
+posts_per_page - the number of posts to display. The default is -1. This causes the post count to default to the value in Blog pages show at most.
+
+post_type – the type of posts to display. The default is ‘post”.  Enter any type that supports thumbnails. Obviously, you want to have featured images set for all of the posts that you are displaying in this grid. You can use ‘page’ here if your theme supports thumbnails on pages. You can enter custom post types, like ‘events’ in this section too.
+
+orderby - Sort retrieved posts by parameter. The default is none.
+
+order – ‘DESC’ or ‘ASC’
+
+[thumbnailgrid cat='1' posts='5' type='post' order_by='author' order='ASC']”
+
+Will display the thumbnails for the 5 most recent posts from the category with the id of 1 sorted by the author name in ascending order
+
+[thumbnailgrid]
+Will display the thumbnails using the default value in the Reading settings Blog pages show at most.
+
+Bookmarks (Links)
+
+Bookmark links can also be displayed clickable as thumbnails. If your installation of  Wordpress is missing Links, you can install the plugin.  Set the thumbnail image in the advanced section of the “Edit Link” screen where it says “Image Address”. Because there is no look-up feature on this administrative page. If you are using images from your own media library you may want to install this handy plugin
+
+You can use any of the parameters listed on the WordPress Codex page for bookmarks. Note that for bookmarks, you should use category instead of cat.
+
+Examples:
+
+[bkthumbnailgrid category="4" limit="5"]
+displays the thumbnails for the first 5 bookmarks where the link category is 4.
+
+[bkthumbnailgrid orderby="owner" order="DESC"]
+displays all thumbnails for all bookmarks ordered descending by the name of the owner.
+
+ 
+
+
+== Installation ==
+
+Download the Thumbnail Grid Plugin
+
+How to install this plugin
+
+Method 1:
+Coming soon: Install this plugin using the built-in plugin installer:
+Go to Plugins > Add New.
+Under Search, type “Thumbnail Grid”
+Click Install Now.
+A popup window will ask you to confirm your wish to install the Plugin.
+Click Proceed to continue with the installation. The resulting installation screen will list the installation as successful or note any problems during the install.
+If successful, click Activate Plugin to activate it, or Return to Plugin Installer for further actions.
+
+Method 2:
+Download the plugin. In the WordPress admin panel, click on Plugins. Select Add New to get to the “Install Plugins” page. Click on browse and choose the downloaded file.
+
+
+
+Click on the “Install Now” button to install the plugin. Once the plugin is installed, select “Activate Plugin”.
+
+Method 3: (Advanced Users):
+
+Unzip the file. Using FTP, upload the thumbnailgrid folder to the contents/plugins folder in your wordpress directory.
+
+
+
+== Frequently Asked Questions ==
+- How do I control the number of thumbnails that appear? -
+This plugin is not designed to show several pages of thumbnails, rather it is designed to allow you to embed thumbnails into any page or to display a subset of thumbnails on a page. To show more thumbnails on a page than the default value Blog pages show at most, use a fixed value for posts_per_page or try setting the posts_per_page value to ’999′.
+
+-I can't add a thumbnail to my posts.-
+Your theme must be enabled for post thumbnails.
+
+== Screenshots ==
+
+
+== Changelog ==
+
+= 1.0 =
+* Original Release
+
+
+== Arbitrary section ==
+
+Need more? Customization is available. Contact adrian@nomadcoder.com for more information.

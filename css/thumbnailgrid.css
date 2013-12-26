@@ -1,0 +1,30 @@
+body {
+}
+.postimage,
+.postimage img {
+	width: 150px;
+	height: 150px;
+}
+
+div.postimage-title a
+{
+    text-decoration: none;
+text-overflow:ellipsis;
+display: block;
+white-space: nowrap;
+overflow: hidden;
+
+}
+
+.griditemleft {
+	float: left;
+	width: 150px;
+	padding: 10px;
+}
+
+.gridcontainer .postimage-title {
+	text-align: center;
+	width: 100%;
+	word-wrap: break-word;
+	font-size: 12px;
+}
