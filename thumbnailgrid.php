@@ -3,7 +3,7 @@
 Plugin Name: Featured Image Thumbnail Grid
 Plugin URI: http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/
 Description: Display Thumbnail Grid using Featured Images
-Version: 1.0
+Version: 1.1
 Author: A. R. Jones
 Author URI: http://www.nomadcoder.com
 */
@@ -173,7 +173,7 @@ function bkthumbnailgrid_function($atts) {
         else 
              $tt = $title; 
             $im = '<div class="postimage">
-                <a href="'. $permalink .'" title="'.$title.'"'. $target .'"><img src="'. $thumbnail .'"/></a> 
+                <a href="'. $permalink .'" title="'.$title.'"'. $target .'><img src="'. $thumbnail .'"/></a> 
 	        </div><!-- .postimage -->';
             $ret .=
             '<div class="griditemleft">'

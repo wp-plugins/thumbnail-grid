@@ -11,6 +11,8 @@ This plugin gives you access to two simple shortcodes that display posts and boo
 
 == Description ==
 
+Version 1.1
+
 This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
 
 This plugin is not designed to show several pages of thumbnails, rather it is designed to allow you to embed thumbnails into any page or to display a subset of thumbnails on a page. To show more thumbnails on a page than the default value Blog pages show at most, use a fixed value for posts_per_page or try setting the posts_per_page value to ’999′.
@@ -103,8 +105,10 @@ Your theme must be enabled for post thumbnails.
 
 = 1.0 =
 * Original Release
-
+= 1.1 =
+* Remove extra quote after link title
 
 == Arbitrary section ==
 
 Need more? Customization is available. Contact adrian@nomadcoder.com for more information.
+
