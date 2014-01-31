@@ -3,7 +3,7 @@
 Plugin Name: Featured Image Thumbnail Grid
 Plugin URI: http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/
 Description: Display Thumbnail Grid using Featured Images
-Version: 1.1
+Version: 1.2
 Author: A. R. Jones
 Author URI: http://www.nomadcoder.com
 */
