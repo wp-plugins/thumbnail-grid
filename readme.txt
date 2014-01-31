@@ -3,15 +3,18 @@ Contributors: nomadcoder
 Donate link: http://www.nomadcoder.com
 Tags: featured image, thumbnail grid
 Requires at least: 
-Tested up to: 3.8
+Tested up to: 3.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
+For quicker support, please visit the plugin web page. 
+ 
+http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/. 
 
 == Description ==
 
-Version 1.1
+Version 1.2
 
 This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
 
@@ -70,7 +73,7 @@ Download the Thumbnail Grid Plugin
 How to install this plugin
 
 Method 1:
-Coming soon: Install this plugin using the built-in plugin installer:
+Install this plugin using the built-in plugin installer:
 Go to Plugins > Add New.
 Under Search, type “Thumbnail Grid”
 Click Install Now.
@@ -99,7 +102,7 @@ This plugin is not designed to show several pages of thumbnails, rather it is de
 Your theme must be enabled for post thumbnails.
 
 == Screenshots ==
-Please visit http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/ to see the thumbnail demos.
+Please visit http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/ to see the thumbnail demos. Below is a screenshot taken from the web site.
 
 == Changelog ==
 
@@ -107,6 +110,8 @@ Please visit http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/ to see t
 * Original Release
 = 1.1 =
 * Remove extra quote after link title
+= 1.2 =
+* Fix incorrect thumbnail image loading 
 
 == Arbitrary section ==
 

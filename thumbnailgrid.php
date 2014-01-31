@@ -109,7 +109,7 @@ function thumbnailgrid_function($atts) {
         $title = get_the_title();
         //$thumbnail = get_the_post_thumbnail();
         $image_id = get_post_thumbnail_id();
-        $image_url = wp_get_attachment_image_src($image_id,'small', true);
+        $image_url = wp_get_attachment_image_src($image_id,'thumbnail', true);
         if ($image_id)
             $thumbnail = '<img src="' .$image_url[0] .'"/>';
         else
