@@ -102,9 +102,9 @@ This plugin is not designed to show several pages of thumbnails, rather it is de
 Your theme must be enabled for post thumbnails.
 
 == Screenshots ==
-Please visit http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/ to see the thumbnail demos. 
 
-1. Below is a screenshot taken from the web site.
+1. This is a screenshot taken from the web site. Please visit http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/ to see the thumbnail demos. 
+
 
 == Changelog ==
 
