@@ -96,7 +96,7 @@ Unzip the file. Using FTP, upload the thumbnailgrid folder to the contents/plugi
 
 == Frequently Asked Questions ==
 - How do I control the number of thumbnails that appear? -
-This plugin is not designed to show several pages of thumbnails, rather it is designed to allow you to embed thumbnails into any page or to display a subset of thumbnails on a page. To show more thumbnails on a page than the default value Blog pages show at most, use a fixed value for posts_per_page or try setting the posts_per_page value to ’999′.
+This plugin is not designed to show several pages of thumbnails, rather it is designed to allow you to embed thumbnails into any page or to display a subset of thumbnails on a page. To show more thumbnails on a page than the default value "Blog pages show at most" (See the second screenshot on the screenshot tab), use a fixed value for posts_per_page or try setting the posts_per_page value to ’999′.
 
 -I can't add a thumbnail to my posts.-
 Your theme must be enabled for post thumbnails.
@@ -105,6 +105,7 @@ Your theme must be enabled for post thumbnails.
 
 1. This is a screenshot taken from the web site. Please visit http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/ to see the thumbnail demos. 
 
+2. To view or modify "Blog Pages Show at most, go to the reading section of your Wordpress Settings
 
 == Changelog ==
 
