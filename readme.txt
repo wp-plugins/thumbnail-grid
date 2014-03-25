@@ -7,10 +7,15 @@ Tested up to: 3.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+
 This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
+
 For quicker support, please visit the plugin web page. 
  
 http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/. 
+
+Please Comment & Rate. If you can, plese Donate. Everything helps! 
+
 
 == Description ==
 
@@ -32,7 +37,7 @@ Here are some of the most common paramaters:
 cat = (*Use cat instead of category for posts if category does not work) category id. To view the category id, go to your post categories, edit the category and look in the browser address bar for the category id. If you don’t see it, click your mouse in the address bar.
 It should look something like this. The category id is 7:
 
-http://www.yoursite.com/wp-admin/edit-tags.php?action=edit&taxonomy=category&tag_ID=7&post_type=post
+http://www.[your site here.com]/wp-admin/edit-tags.php?action=edit&taxonomy=category&tag_ID=7&post_type=post
 
 posts_per_page - the number of posts to display. The default is -1. This causes the post count to default to the value in Blog pages show at most.
 
@@ -98,8 +103,30 @@ Unzip the file. Using FTP, upload the thumbnailgrid folder to the contents/plugi
 - How do I control the number of thumbnails that appear? -
 This plugin is not designed to show several pages of thumbnails, rather it is designed to allow you to embed thumbnails into any page or to display a subset of thumbnails on a page. To show more thumbnails on a page than the default value "Blog pages show at most" (See the second screenshot on the screenshot tab), use a fixed value for posts_per_page or try setting the posts_per_page value to ’999′.
 
--I can't add a thumbnail to my posts.-
+- I can't add a thumbnail to my posts.-
 Your theme must be enabled for post thumbnails.
+
+- How do I change the thumbnail size/appearance
+Follow instructions belos. You can also use this link for some advanced tips for editing the plugin stylesheet. http://www.wholereason.com/2014/02/guide-simple-wordpress-photoblog-gallery-grid.html
+
+You can install a custom css plugin (do a search for the plugin Simple Custom CSS). Once installed, it should show up in your Appearance menu. Using the Custom CSS plugin:
+
+Copy & Paste the styles below. Replace the width and height with the width and height that you would like to use. You can also change the space around the thumbnail by changing the padding. !important ensures that your custom style will have priority over the default style.
+
+Start Copy & Paste Below this line
+
+.postimage,
+.postimage img {
+width: 150px!important;
+height: 150px!important;
+}
+.griditemleft {
+width: 150px!important;
+padding: 10px!important;
+}
+
+End Copy & Paste Above this line
+Save this change. When you are testing your view, make sure that you refresh the page. If you mess it up, just delete it and start over.
 
 == Screenshots ==
 
