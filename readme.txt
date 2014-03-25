@@ -37,7 +37,7 @@ Here are some of the most common paramaters:
 cat = (*Use cat instead of category for posts if category does not work) category id. To view the category id, go to your post categories, edit the category and look in the browser address bar for the category id. If you don’t see it, click your mouse in the address bar.
 It should look something like this. The category id is 7:
 
-http://www.[[your site goes here]]/wp-admin/edit-tags.php?action=edit&taxonomy=category&tag_ID=7&post_type=post
+[[your site goes here]]/wp-admin/edit-tags.php?action=edit&taxonomy=category&tag_ID=7&post_type=post
 
 posts_per_page - the number of posts to display. The default is -1. This causes the post count to default to the value in Blog pages show at most.
 
