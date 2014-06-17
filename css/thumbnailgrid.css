@@ -6,6 +6,7 @@ body {
 	height: 150px;
 }
 
+
 div.postimage-title a
 {
     text-decoration: none;
@@ -16,6 +17,12 @@ overflow: hidden;
 
 }
 
+.griditem
+{
+    width: 150px;
+    height: 150px;
+     
+}
 .griditemleft {
 	float: left;
 	width: 150px;
@@ -28,3 +35,16 @@ overflow: hidden;
 	word-wrap: break-word;
 	font-size: 12px;
 }
+
+/*2.0 Enable center thumbnail grid*/
+.thumbnailblock
+{
+    width: 100%;
+    text-align: center;
+}
+.thumbnailgridcontainer
+{
+    display: inline-block;
+}
+.thumbnailgridcontainer:after { content: "."; visibility: hidden; display: block; clear: both; height: 0; font-size: 0; }
+/*End center thumbnail grid*/

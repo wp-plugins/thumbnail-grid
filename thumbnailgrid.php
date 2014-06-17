@@ -3,7 +3,7 @@
 Plugin Name: Featured Image Thumbnail Grid
 Plugin URI: http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/
 Description: Display Thumbnail Grid using Featured Images
-Version: 1.2
+Version: 2.0
 Author: A. R. Jones
 Author URI: http://www.nomadcoder.com
 */
@@ -54,6 +54,7 @@ Order By for Posts
 */
 add_shortcode("thumbnailgrid", "thumbnailgrid_handler");
 add_shortcode("bkthumbnailgrid", "bkthumbnailgrid_handler");
+
 add_filter('query_vars', 'tbpage_vars');
 
 function tbpage_vars($qvars)
@@ -69,14 +70,16 @@ function tbpage_vars($qvars)
 function bkthumbnailgrid_handler($atts) {
     //Include Stylesheet
      wp_enqueue_style('thumbnailgrid', plugins_url('css/thumbnailgrid.css', __FILE__));
-    $output = bkthumbnailgrid_function($atts);
+     $tg = new thumbnailgrid();
+    $output = $tg->bkthumbnailgrid_function($atts);
   
     return $output;
 }
 function thumbnailgrid_handler($atts) {
     //Include Stylesheet
      wp_enqueue_style('thumbnailgrid', plugins_url('css/thumbnailgrid.css', __FILE__));
-    $output = thumbnailgrid_function($atts);
+     $tg = new thumbnailgrid();
+    $output = $tg->thumbnailgrid_function($atts);
   
     return $output;
 }
@@ -85,107 +88,148 @@ function thumbnailgrid_handler($atts) {
 	 * $atts = array of options
      * 
 	 */
-function thumbnailgrid_function($atts) {
-  
- 
-   
-    wp_reset_query();
-    if ($atts)
-        $the_query = new WP_Query($atts);
-    else
-    {
-        
-    
-        $the_query = new WP_Query('posts_per_page  = -1');
-    }
-    // The Loop
-    $ret = '';
 
-    while ( $the_query->have_posts() ) :$the_query->the_post();
- 
-   
-        $titlelength = 20;
-        $permalink = get_permalink();
-        $title = get_the_title();
-        //$thumbnail = get_the_post_thumbnail();
-        $image_id = get_post_thumbnail_id();
-        $image_url = wp_get_attachment_image_src($image_id,'thumbnail', true);
-        if ($image_id)
-            $thumbnail = '<img src="' .$image_url[0] .'"/>';
+class thumbnailgrid
+{
+    
+
+    function thumbnailgrid_function($atts) {
+        wp_reset_query();
+        if ($atts)
+        {
+              extract( shortcode_atts( array(
+                'height' => '',                
+                'width' => ''
+	        ), $atts ) );
+           unset($atts["height"]);
+           unset($atts["width"]);
+          
+           $the_query = new WP_Query($atts);
+        }
+  
+
         else
-            $thumbnail = '';
-
-        /*if (strlen($title) > $titlelength)
-            $tt = mb_substr($title, 0, $titlelength) . ' ...';
-        else */
-             $tt = $title; 
-            $im = '<div class="postimage">
+        {
+            $the_query = new WP_Query('posts_per_page  = -1');
+        }
+        // The Loop
+      
+        $ret = '<div class="thumbnailblock"><div class="thumbnailgridcontainer">';
+        $style = "";
+        if ($height || $width)
+        {
+            $style = ' style="';
+            if ($height)
+                $style .= 'height:' .$height . ';';
+            
+            if ($width)
+                $style .= 'width:' .$width . ';';
+            $style .= '"';
+         } 
+     
+          while ( $the_query->have_posts() ) :$the_query->the_post();
+            $titlelength = 20;
+            $permalink = get_permalink();
+            $title = get_the_title();
+            //$thumbnail = get_the_post_thumbnail();
+            $image_id = get_post_thumbnail_id();
+            $image_url = wp_get_attachment_image_src($image_id,'thumbnail', true);
+            if ($image_id)
+                $thumbnail = '<img src="' .$image_url[0] .'"' .$style . '/>';
+            else
+                $thumbnail = '';
+            $tt = $title; 
+            $im = '<div class="postimage"' .$style .'>
                 <a href="'. $permalink .'" title="'.$title.'">'. $thumbnail .'</a> 
-	        </div><!-- .postimage -->';
-            $ret .=
-            '<div class="griditemleft">'
-            . $im .'
-	        <div class="postimage-title">
-		        <a href="'. $permalink .'" title="'. $title .'">'.$tt .'</a>
-	        </div>
-        </div><!-- .griditemleft -->';
+	            </div><!-- .postimage -->';
+               
+                $ret .=
+                '<div class="griditemleft"' .$style .'>'
+                . $im ;
 
+	            $ret .= '<div class="postimage-title">
+		            <a href="'. $permalink .'" title="'. $title .'">'.$tt .'</a>
+	            </div>
+            </div><!-- .griditemleft -->';
+        
+         
  
-    endwhile;
-    wp_reset_postdata();
-    return $ret;
-}
-	 /**
-	 * Function for Shortcode.
-	 * $atts = array of options
-     * 
-	 */
-function bkthumbnailgrid_function($atts) {
+        endwhile;
+        wp_reset_postdata();
+        $ret .=  '</div></div>';
+        return $ret;
+    }
   
-  
-    
-  
-    
-    
-    $titlelength = 20; // Length of the post titles shown below the thumbnails
+ 
+	     /**
+	     * Function for Shortcode.
+	     * $atts = array of options
+         * 
+	     */
+    function bkthumbnailgrid_function($atts) {
+        if ($atts)
+        {
+           extract( shortcode_atts( array(
+                'height' => '',                
+                'width' => ''
+	        ), $atts ) );
+           unset($atts["height"]);
+           unset($atts["width"]);
+          
+           $the_query = new WP_Query($atts);
+        }
+        $style = "";
+        if ($height || $width)
+        {
+            $style = ' style="';
+            if ($height)
+                $style .= 'height:' .$height . ';';
+            
+            if ($width)
+                $style .= 'width:' .$width . ';';
+            $style .= '"';
+         } 
+        $titlelength = 20; // Length of the post titles shown below the thumbnails
    
-    $bookmarks = get_bookmarks( $atts );
+        $bookmarks = get_bookmarks( $atts );
 
-// Loop through each bookmark and print formatted output
-    $ret = '';
-     $titlelength = 20;
-    foreach ( $bookmarks as $bookmark ) { 
+    // Loop through each bookmark and print formatted output
+        $ret = '';
+         $titlelength = 20;
+        foreach ( $bookmarks as $bookmark ) { 
     
 
        
-        $permalink = $bookmark->link_url;
-        $title = $bookmark->link_name;
-        $target = $bookmark->link_target;
-        $thumbnail = $bookmark->link_image;
-        if ($target != '')
-        {
-            $target = ' target="' .$target .'"';
+            $permalink = $bookmark->link_url;
+            $title = $bookmark->link_name;
+            $target = $bookmark->link_target;
+            $thumbnail = $bookmark->link_image;
+            if ($target != '')
+            {
+                $target = ' target="' .$target .'"';
        
            
-        }
-       if (strlen($title) > $titlelength)
-            $tt = mb_substr($title, 0, $titlelength) . ' ...';
-        else 
-             $tt = $title; 
-            $im = '<div class="postimage">
-                <a href="'. $permalink .'" title="'.$title.'"'. $target .'><img src="'. $thumbnail .'"/></a> 
-	        </div><!-- .postimage -->';
-            $ret .=
-            '<div class="griditemleft">'
-            . $im .'
-	        <div class="postimage-title">
-		        <a href="'. $permalink .'" title="'. $title .'">'.$tt .'</a>
-	        </div>
-        </div><!-- .griditemleft -->';
+            }
+            
+           if (strlen($title) > $titlelength)
+                $tt = mb_substr($title, 0, $titlelength) . ' ...';
+            else 
+                 $tt = $title; 
+                $im = '<div class="postimage"' .$style .'>
+                    <a href="'. $permalink .'" title="'.$title.'"'. $target .'><img src="'. $thumbnail .'"' . $style .'/></a> 
+	            </div><!-- .postimage -->';
+                $ret .=
+                '<div class="griditemleft"' .$style .'>'
+                . $im .
+	            '<div class="postimage-title">
+		            <a href="'. $permalink .'" title="'. $title .'">'.$tt .'</a>
+	            </div>
+            </div><!-- .griditemleft -->';
       
        
+        }
+        wp_reset_postdata();
+        return $ret;
     }
-    wp_reset_postdata();
-    return $ret;
 }
 ?>
