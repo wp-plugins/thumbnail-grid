@@ -138,19 +138,19 @@ Save this change. When you are testing your view, make sure that you refresh the
 - How do I center the grid?
 If your theme does not have a custom css module, you can install a custom css plugin (do a search for the plugin Simple Custom CSS). Once installed, it should show up in your Appearance menu. Using the Custom CSS plugin:
 
-Using custom CSS, you must add a width to thumbnailgridcontainer. This can be a percentage.
+Using custom CSS, you must add a width to thumbnailgridcontainer and set display to inline-block. This can be a percentage.
 
 Example 1:
 
 .thumbnailgridcontainer {
-  
+    display: inline-block;
     width: 500px;
 }
 
 Example 2:
 .thumbnailgridcontaner
 {
-   
+    display:inline-block;
     width:80%;
 }
 End Copy & Paste Above this line
