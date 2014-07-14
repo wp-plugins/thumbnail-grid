@@ -188,8 +188,8 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 * Add functionality that enables users to center grid. See instructions.
 * Add height & width attributes to shortcode for individual thumbnail grid.
 = 2.1 =
-*Fixes for height & width, minor modifications
-*Add gridwidth attribute to shortcode
+* Fixes for height & width, minor modifications
+* Add gridwidth attribute to shortcode
 == Arbitrary section ==
 
 Need more? Customization is available. Contact adrian@nomadcoder.com for more information.
