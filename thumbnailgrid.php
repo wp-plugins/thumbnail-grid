@@ -67,17 +67,21 @@ function tbpage_vars($qvars)
 	 * $atts = array of options
      * 
 	 */
+ add_action( 'wp_enqueue_scripts', 'thumbnailgrid_scripts_method' );
+ function thumbnailgrid_scripts_method()
+ {
+      wp_enqueue_style('thumbnailgrid', plugins_url('css/thumbnailgrid.css', __FILE__));
+ }
 function bkthumbnailgrid_handler($atts) {
     //Include Stylesheet
-     wp_enqueue_style('thumbnailgrid', plugins_url('css/thumbnailgrid.css', __FILE__));
+    
      $tg = new thumbnailgrid();
     $output = $tg->bkthumbnailgrid_function($atts);
   
     return $output;
 }
 function thumbnailgrid_handler($atts) {
-    //Include Stylesheet
-     wp_enqueue_style('thumbnailgrid', plugins_url('css/thumbnailgrid.css', __FILE__));
+ 
      $tg = new thumbnailgrid();
     $output = $tg->thumbnailgrid_function($atts);
   
@@ -91,7 +95,7 @@ function thumbnailgrid_handler($atts) {
 
 class thumbnailgrid
 {
-    
+   
 
     function thumbnailgrid_function($atts) {
         wp_reset_query();
@@ -99,22 +103,24 @@ class thumbnailgrid
         {
               extract( shortcode_atts( array(
                 'height' => '',                
-                'width' => ''
+                'width' => '',
+                'gridwidth' =>''
 	        ), $atts ) );
            unset($atts["height"]);
            unset($atts["width"]);
+           unset($atts["gridwidth"]);
           
            $the_query = new WP_Query($atts);
         }
-  
-
         else
         {
             $the_query = new WP_Query('posts_per_page  = -1');
         }
         // The Loop
-      
-        $ret = '<div class="thumbnailblock"><div class="thumbnailgridcontainer">';
+        $style = "";
+        if ($gridwidth)
+            $style = "style=width:$gridwidth";
+        $ret = '<div class="thumbnailblock"><div class="thumbnailgridcontainer"' . $style. '>';
         $style = "";
         if ($height || $width)
         {
@@ -131,7 +137,6 @@ class thumbnailgrid
             $titlelength = 20;
             $permalink = get_permalink();
             $title = get_the_title();
-            //$thumbnail = get_the_post_thumbnail();
             $image_id = get_post_thumbnail_id();
             $image_url = wp_get_attachment_image_src($image_id,'thumbnail', true);
             if ($image_id)
@@ -142,18 +147,13 @@ class thumbnailgrid
             $im = '<div class="postimage"' .$style .'>
                 <a href="'. $permalink .'" title="'.$title.'">'. $thumbnail .'</a> 
 	            </div><!-- .postimage -->';
-               
                 $ret .=
-                '<div class="griditemleft"' .$style .'>'
+                '<div class="griditemleft">'
                 . $im ;
-
 	            $ret .= '<div class="postimage-title">
 		            <a href="'. $permalink .'" title="'. $title .'">'.$tt .'</a>
 	            </div>
             </div><!-- .griditemleft -->';
-        
-         
- 
         endwhile;
         wp_reset_postdata();
         $ret .=  '</div></div>';
@@ -171,11 +171,12 @@ class thumbnailgrid
         {
            extract( shortcode_atts( array(
                 'height' => '',                
-                'width' => ''
-	        ), $atts ) );
+                'width' => '',
+                'gridwidth' => ''
+ 	        ), $atts ) );
            unset($atts["height"]);
            unset($atts["width"]);
-          
+           unset($atts["gridwidth"]);
            $the_query = new WP_Query($atts);
         }
         $style = "";
@@ -194,12 +195,13 @@ class thumbnailgrid
         $bookmarks = get_bookmarks( $atts );
 
     // Loop through each bookmark and print formatted output
-        $ret = '';
-         $titlelength = 20;
-        foreach ( $bookmarks as $bookmark ) { 
-    
-
        
+        $gstyle = "";
+        if ($gridwidth)
+            $gstyle = "style=width:$gridwidth";
+        $ret = '<div class="thumbnailblock"><div class="thumbnailgridcontainer"' . $gstyle. '>';
+       // $titlelength = 20;
+        foreach ( $bookmarks as $bookmark ) { 
             $permalink = $bookmark->link_url;
             $title = $bookmark->link_name;
             $target = $bookmark->link_target;
@@ -207,8 +209,6 @@ class thumbnailgrid
             if ($target != '')
             {
                 $target = ' target="' .$target .'"';
-       
-           
             }
             
            if (strlen($title) > $titlelength)
@@ -219,16 +219,15 @@ class thumbnailgrid
                     <a href="'. $permalink .'" title="'.$title.'"'. $target .'><img src="'. $thumbnail .'"' . $style .'/></a> 
 	            </div><!-- .postimage -->';
                 $ret .=
-                '<div class="griditemleft"' .$style .'>'
+                '<div class="griditemleft">'
                 . $im .
 	            '<div class="postimage-title">
 		            <a href="'. $permalink .'" title="'. $title .'">'.$tt .'</a>
 	            </div>
             </div><!-- .griditemleft -->';
-      
-       
         }
         wp_reset_postdata();
+         $ret .=  '</div></div>';
         return $ret;
     }
 }

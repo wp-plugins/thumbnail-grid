@@ -18,7 +18,7 @@ Please Comment & Rate. If you can, plese Donate. Everything helps!
 
 
 == Description ==
-Version 2.0
+Version 2.10
 
 
 This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
@@ -31,6 +31,9 @@ POSTS & PAGES
 
 You can now use height & width to override the height & width of the thumbnail
 [thumbnailgrid height="100px" width="100px"]
+
+You can now change the width of the grid 
+[thumbnailgrid gridwidth="500px"]
 
 You can use any of the parameters listed in the wordpress codex.
 Click here to see the WordPress Codex for Posts
@@ -112,10 +115,12 @@ This plugin is not designed to show several pages of thumbnails, rather it is de
 Your theme must be enabled for post thumbnails.
 
 - How do I change the Height & Width on a single post or page?
-You can now change the height and width in the short code, allowing you to override the style sheet width and height
+You can now change the height and width in the short code, allowing you to override the style sheet width and height. Use auto to retain proportional sizing in the grid.
 
-- How do I change the Height & Width?
-(To change the width and height for all thumbnails)
+[thumbnailgrid height="200px" width="auto"]
+
+- How do I change the Height & Width of the thumbnails for all posts and pages?
+
 You can install a custom css plugin (do a search for the plugin Simple Custom CSS). Once installed, it should show up in your Appearance menu. Using the Custom CSS plugin:
 
 Copy & Paste the styles below. Replace the width and height with the width and height that you would like to use. You can also change the space around the thumbnail by changing the padding. !important ensures that your custom style will have priority over the default style.
@@ -135,48 +140,31 @@ padding: 10px!important;
 End Copy & Paste Above this line
 Save this change. When you are testing your view, make sure that you refresh the page. If you mess it up, just delete it and start over.
 
-- How do I center the grid?
+- How do I center the grid on individual posts or pages?
+
+You must set the width of the grid in order to center it. You can set the grid width in the shortcode by using the gridwidth in the shortcode.
+
+[thumbnailgrid gridwidth="500px"]
+
+How do I center the grid on all pages?
+
 If your theme does not have a custom css module, you can install a custom css plugin (do a search for the plugin Simple Custom CSS). Once installed, it should show up in your Appearance menu. Using the Custom CSS plugin:
 
-Using custom CSS, you must add a width to thumbnailgridcontainer and set display to inline-block. This can be a percentage.
+Using custom CSS, you must add a width to thumbnailgridcontainer. This can be a percentage.
 
 Example 1:
 
 .thumbnailgridcontainer {
-    display: inline-block;
-    width: 500px;
+
+width: 500px!important;
 }
 
 Example 2:
 .thumbnailgridcontaner
 {
-    display:inline-block;
-    width:80%;
+
+width:80%!important;
 }
-End Copy & Paste Above this line
-Save this change. When you are testing your view, make sure that you refresh the page. If you mess it up, just delete it and start over.
-
-- How do I center the grid for specific pages or posts?
-If your theme does not have a custom css module, you can install a custom css plugin (do a search for the plugin Simple Custom CSS). Once installed, it should show up in your Appearance menu. Using the Custom CSS plugin:
-
-Using your custom css module, you must add a width to thumbnailgridcontainer. This can be a percentage.
-
-You can also create styles for specific pages or posts. Go to the page or post, click on EDIT and find the ID by looking in the address bar. Look for something that looks like post=328&action=edit
-
-Create custom css for that post by replacing 123 below with your post id number
-#post-123 .thumbnailgridcontainer
-{
-    width:350px;
-}
-
-For pages, replace 225 below with your page id number
-
-#page-225 .thumbnailgridcontainer
-{
-   
-    width:350px;
-}
-
 End Copy & Paste Above this line
 Save this change. When you are testing your view, make sure that you refresh the page. If you mess it up, just delete it and start over.
 
@@ -184,7 +172,7 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 
 == Screenshots ==
 
-1. This is a screenshot taken from the web site. Please visit http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/ to see the thumbnail demos. 
+1. This is a screenshot taken from the web site. Please visit http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/ to see the thumbnail demos.
 
 2. To view or modify "Blog Pages Show at most, go to the reading section of your Wordpress Settings
 
@@ -195,12 +183,13 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 = 1.1 =
 * Remove extra quote after link title
 = 1.2 =
-* Fix incorrect thumbnail image loading 
+* Fix incorrect thumbnail image loading
 = 2.0 =
 * Add functionality that enables users to center grid. See instructions.
 * Add height & width attributes to shortcode for individual thumbnail grid.
-
+= 2.1 =
+*Fixes for height & width, minor modifications
+*Add gridwidth attribute to shortcode
 == Arbitrary section ==
 
 Need more? Customization is available. Contact adrian@nomadcoder.com for more information.
-

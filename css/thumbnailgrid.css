@@ -10,29 +10,30 @@ body {
 div.postimage-title a
 {
     text-decoration: none;
-text-overflow:ellipsis;
-display: block;
-white-space: nowrap;
-overflow: hidden;
-
+    text-overflow:ellipsis;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .griditem
 {
-    width: 150px;
+    /*width: 150px;*/
     height: 150px;
      
 }
 .griditemleft {
 	float: left;
-	width: 150px;
-	padding: 10px;
+/*	width: 150px;*/
+/*height: 150px;*/
+	margin: 10px;
 }
 
 .gridcontainer .postimage-title {
 	text-align: center;
 	width: 100%;
 	word-wrap: break-word;
+    width: 150px;
 	font-size: 12px;
 }
 
