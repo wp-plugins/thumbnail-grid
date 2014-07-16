@@ -3,7 +3,7 @@
 Plugin Name: Featured Image Thumbnail Grid
 Plugin URI: http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/
 Description: Display Thumbnail Grid using Featured Images
-Version: 2.1.1
+Version: 2.1.2
 Author: A. R. Jones
 Author URI: http://www.nomadcoder.com
 */
@@ -146,14 +146,14 @@ class thumbnailgrid
             $tt = $title; 
             $im = '<div class="postimage"' .$style .'>
                 <a href="'. $permalink .'" title="'.$title.'">'. $thumbnail .'</a> 
-	            </div><!-- .postimage -->';
+	            </div>';
                 $ret .=
                 '<div class="griditemleft">'
                 . $im ;
 	            $ret .= '<div class="postimage-title">
 		            <a href="'. $permalink .'" title="'. $title .'">'.$tt .'</a>
 	            </div>
-            </div><!-- .griditemleft -->';
+            </div>';
         endwhile;
         wp_reset_postdata();
         $ret .=  '</div></div>';
@@ -217,14 +217,14 @@ class thumbnailgrid
                  $tt = $title; 
                 $im = '<div class="postimage"' .$style .'>
                     <a href="'. $permalink .'" title="'.$title.'"'. $target .'><img src="'. $thumbnail .'"' . $style .'/></a> 
-	            </div><!-- .postimage -->';
+	            </div>';
                 $ret .=
                 '<div class="griditemleft">'
                 . $im .
 	            '<div class="postimage-title">
 		            <a href="'. $permalink .'" title="'. $title .'">'.$tt .'</a>
 	            </div>
-            </div><!-- .griditemleft -->';
+            </div>';
         }
         wp_reset_postdata();
          $ret .=  '</div></div>';
