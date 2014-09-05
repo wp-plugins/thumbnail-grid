@@ -3,22 +3,22 @@ Contributors: nomadcoder
 Donate link: http://www.nomadcoder.com
 Tags: featured image, thumbnail grid
 Requires at least: 
-Tested up to: 3.9.1
+Tested up to: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
 
-For quicker support, please visit the plugin web page. 
+For quicker support, please visit the NEW plugin web page. 
  
-http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/. 
+http://www.shooflysolutions.com/software/featured-image-thumbnail-grid-for-wordpress/
 
-Please Comment & Rate. If you can, plese Donate. Everything helps! 
+Please be kind and rate this plugin. Everything helps! 
 
 
 == Description ==
-Version 2.1.2
+Version 3.0
 
 
 This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
@@ -28,12 +28,6 @@ This plugin is not designed to show several pages of thumbnails, rather it is de
 Your theme must be enabled for post thumbnails.
 
 POSTS & PAGES
-
-You can now use height & width to override the height & width of the thumbnail
-[thumbnailgrid height="100px" width="100px"]
-
-You can now change the width of the grid 
-[thumbnailgrid gridwidth="500px"]
 
 You can use any of the parameters listed in the wordpress codex.
 Click here to see the WordPress Codex for Posts
@@ -62,6 +56,7 @@ Will display the thumbnails for the 5 most recent posts from the category with t
 [thumbnailgrid]
 Will display the thumbnails using the default value in the Reading settings Blog pages show at most.
 
+
 Bookmarks (Links)
 
 Bookmark links can also be displayed clickable as thumbnails. If your installation of  Wordpress is missing Links, you can install the plugin.  Set the thumbnail image in the advanced section of the “Edit Link” screen where it says “Image Address”. Because there is no look-up feature on this administrative page. If you are using images from your own media library you may want to install this handy plugin
@@ -76,7 +71,35 @@ displays the thumbnails for the first 5 bookmarks where the link category is 4.
 [bkthumbnailgrid orderby="owner" order="DESC"]
 displays all thumbnails for all bookmarks ordered descending by the name of the owner.
 
- 
+Shortcodes
+Most properties can be set in the style sheet or in the custom css module for your theme. The following settings are shortcode settings that apply to individual grids. Note that for width and height values you may use any valid unit of height: px, cm, %, etc. Note: Media Image sizes are configured in the wordpress admin panel under Settings/Media. The default thumbnail size is 150px by 150px. The style sheet is configured to handle the default thumbnail size. To properly display your images, you must modify the height and witdth in the thumbanil shortcode or the style sheet.
+
+height
+The height of thumbnail image. This value defaults to the height of the thumbnail or the setting in the style sheet.
+
+width 
+The width of the thumbnail image. This value defaults to the width of the thumbnail or the setting in the style sheet. To display an image proportionately, set this value to ‘auto’;
+
+gridwidth
+The width of the grid. this value defaults to the width of the grid area or to the setting in the style sheet.
+
+showcaption 
+Set showcaption=FALSE to hide the captions showcaption defaults to TRUE
+
+captionheight
+This value sets the caption height and hides the overflow (if there is more text than can fit into the caption area, it will not be visible). The display defaults to one line of text or the value in the style sheet.
+
+captionwidth
+The caption width. This value defaults to the width variable above or to the setting in the style sheet.
+
+wraptext
+Wrap the text in the caption. Normally the text is limited to one line and overflow is indicated by an elipses. Please note that, to avoid a misaligned grid, you should set a caption height when wrapping text in a grid that has more than one row. wraptext defaults to FALSE
+
+aligngrid
+When the gridwidth value is set, set this value to left, right or center 
+
+imagesize
+Media Image sizes are configured in the wordpress admin panel under Settings/Media. You can use any size in the plugin. The default value is ‘thumb’. thumb thumbnail medium large post-thumbnail 
 
 
 == Installation ==
@@ -120,6 +143,7 @@ You can now change the height and width in the short code, allowing you to overr
 [thumbnailgrid height="200px" width="auto"]
 
 - How do I change the Height & Width of the thumbnails for all posts and pages?
+
 
 You can install a custom css plugin (do a search for the plugin Simple Custom CSS). Once installed, it should show up in your Appearance menu. Using the Custom CSS plugin:
 
@@ -192,6 +216,9 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 * Add gridwidth attribute to shortcode
 * = 2.1.1 - Fix to style sheet
 * = 2.1.2 - Remove comments that (we think) wordpress is changing to <p>carriage returns.</p>
+* = 3.0.0 - 
+* Added filters to plugin for Extensions.
+* New shortcodes aligngrid, gridwidth, captionheight, displaycaption and imagesize.
 == Arbitrary section ==
 
 Need more? Customization is available. Contact adrian@nomadcoder.com for more information.

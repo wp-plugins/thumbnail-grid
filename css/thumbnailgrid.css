@@ -37,17 +37,17 @@ div.postimage-title a
 	margin: 10px;
 }
 
-
-
 /*2.0 Enable center thumbnail grid*/
 .thumbnailblock
 {
     width: 100%;
     text-align: center;
+    clear:both;
+    display: block;
 }
 .thumbnailgridcontainer
 {
     display: inline-block;
 }
-.thumbnailgridcontainer:after { content: "."; visibility: hidden; display: block; clear: both; height: 0; font-size: 0; }
+.thumbnailgridcontainer:after, .thumbnailgridcontainer:before, .thumbnailblock:after { content: "."; visibility: hidden; display: block; clear: both; height: 0; font-size: 0; }
 /*End center thumbnail grid*/
