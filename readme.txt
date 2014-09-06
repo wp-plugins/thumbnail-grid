@@ -131,6 +131,16 @@ Unzip the file. Using FTP, upload the thumbnailgrid folder to the contents/plugi
 
 
 == Frequently Asked Questions ==
+
+- Only 10 thumbnails display at once no matter what I do
+
+WordPress uses posts per page to control how many posts show up (In "Readings Settings", look at "Blog pages show at most". You will see that it is set to 10.
+
+To override this in the thumbnail plugin, use a fixed value for posts_per_page or try setting the posts_per_page value to ’999′. All of the thumbnails for your posts (as long as you do not have more than 999 posts), should display.
+
+This should work:
+
+[thumbnailgrid posts_per_page ='999']
 - How do I control the number of thumbnails that appear? -
 This plugin is not designed to show several pages of thumbnails, rather it is designed to allow you to embed thumbnails into any page or to display a subset of thumbnails on a page. To show more thumbnails on a page than the default value "Blog pages show at most" (See the second screenshot on the screenshot tab), use a fixed value for posts_per_page or try setting the posts_per_page value to ’999′.
 
