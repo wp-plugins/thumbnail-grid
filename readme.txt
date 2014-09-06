@@ -18,7 +18,7 @@ Please be kind and rate this plugin. Everything helps!
 
 
 == Description ==
-Version 3.0
+Version 3.0.1
 
 
 This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
@@ -229,6 +229,8 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 * = 3.0.0 - 
 * Added filters to plugin for Extensions.
 * New shortcodes aligngrid, gridwidth, captionheight, displaycaption and imagesize.
+* = 3.0.1 -
+* Remove update checker
 == Arbitrary section ==
 
 Need more? Customization is available. Contact adrian@nomadcoder.com for more information.
