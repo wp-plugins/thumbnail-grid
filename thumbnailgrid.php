@@ -57,7 +57,7 @@ $ver = constant('SFLY_TBGRD_VERSION');
 $wp_html_admin_messages = new sfly_html_admin_messages('http://shooflysolutions.com/plugins/thumbnailgrid', 'sfly-tbgrd-adminmsg.php', $ver, 'sfly_tbgrd');
 $wp_html_admin_nag_messages = new sfly_html_admin_messages('http://shooflysolutions.com/plugins/thumbnailgrid', 'sfly-tbgrd-nagmsg.php', $ver, 'sfly_tbgrd_nag');
 
-require 'plugin-updates/plugin-update-checker.php';
+
 
 add_shortcode("thumbnailgrid", "thumbnailgrid_handler");
 add_shortcode("bkthumbnailgrid", "bkthumbnailgrid_handler");
