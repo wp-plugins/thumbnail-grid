@@ -3,7 +3,7 @@
 Plugin Name: Featured Image Thumbnail Grid
 Plugin URI: http://www.shooflysolutions.com/premium-thumbnail-grid-wordpress-plugin/
 Description: This is the new version of the Featured Image Thumbnail Grid. Display Thumbnail Grid using Featured Images
-Version: 3.0
+Version: 3.1
 Author: A. R. Jones
 Author URI: http://shooflysolutions.com
 */
@@ -49,7 +49,7 @@ Order By for Posts
 */
 
 if (!defined('SFLY_TBGRD_VERSION'))
-    define('SFLY_TBGRD_VERSION', '3.0');
+    define('SFLY_TBGRD_VERSION', '3.1');
 
 require_once ('sfly-tbgrd-maint.php');
 
