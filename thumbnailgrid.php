@@ -49,15 +49,10 @@ Order By for Posts
 */
 
 if (!defined('SFLY_TBGRD_VERSION'))
-    define('SFLY_TBGRD_VERSION', '3.1');
+    define('SFLY_TBGRD_VERSION', '3.1.1');
 
-require_once ('sfly-tbgrd-maint.php');
 
 $ver = constant('SFLY_TBGRD_VERSION');
-$wp_html_admin_messages = new sfly_html_admin_messages('http://shooflysolutions.com/plugins/thumbnailgrid', 'sfly-tbgrd-adminmsg.php', $ver, 'sfly_tbgrd');
-$wp_html_admin_nag_messages = new sfly_html_admin_messages('http://shooflysolutions.com/plugins/thumbnailgrid', 'sfly-tbgrd-nagmsg.php', $ver, 'sfly_tbgrd_nag');
-
-
 
 add_shortcode("thumbnailgrid", "thumbnailgrid_handler");
 add_shortcode("bkthumbnailgrid", "bkthumbnailgrid_handler");
