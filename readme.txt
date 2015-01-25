@@ -3,14 +3,14 @@ Contributors: nomadcoder
 Donate link: http://www.nomadcoder.com
 Tags: featured image, thumbnail grid
 Requires at least: 
-Tested up to: 4.0
+Tested up to: 4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
 
-For quicker support, please visit the NEW plugin web page. 
+For quicker support, please visit the <a href="http://www.shooflysolutions.com/software/featured-image-thumbnail-grid-for-wordpress/">NEW plugin web page</a>. 
  
 http://www.shooflysolutions.com/software/featured-image-thumbnail-grid-for-wordpress/
 
@@ -18,7 +18,7 @@ Please be kind and rate this plugin. Everything helps!
 
 
 == Description ==
-Version 3.1.1
+Version 4.0
 
 
 This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
@@ -74,6 +74,8 @@ displays all thumbnails for all bookmarks ordered descending by the name of the 
 Shortcodes
 Most properties can be set in the style sheet or in the custom css module for your theme. The following settings are shortcode settings that apply to individual grids. Note that for width and height values you may use any valid unit of height: px, cm, %, etc. Note: Media Image sizes are configured in the wordpress admin panel under Settings/Media. The default thumbnail size is 150px by 150px. The style sheet is configured to handle the default thumbnail size. To properly display your images, you must modify the height and witdth in the thumbanil shortcode or the style sheet.
 
+Visit  <a href="http://www.shooflysolutions.com/software/featured-image-thumbnail-grid-for-wordpress/">ShooflySolutions</a> for demos.
+
 height
 The height of thumbnail image. This value defaults to the height of the thumbnail or the setting in the style sheet.
 
@@ -99,7 +101,7 @@ aligngrid
 When the gridwidth value is set, set this value to left, right or center 
 
 imagesize
-Media Image sizes are configured in the wordpress admin panel under Settings/Media. You can use any size in the plugin. The default value is ‘thumb’. thumb thumbnail medium large post-thumbnail 
+Media Image sizes are configured in the wordpress admin panel under Settings/Media. You can use any size in the plugin. The default value is ‘thumb’. thumb thumbnail medium large post-thumbnail (To proportionately size images, try setting the height="100%" width="auto")
 
 
 == Installation ==
@@ -119,8 +121,6 @@ If successful, click Activate Plugin to activate it, or Return to Plugin Install
 
 Method 2:
 Download the plugin. In the WordPress admin panel, click on Plugins. Select Add New to get to the “Install Plugins” page. Click on browse and choose the downloaded file.
-
-
 
 Click on the “Install Now” button to install the plugin. Once the plugin is installed, select “Activate Plugin”.
 
@@ -197,7 +197,7 @@ Example 2:
 .thumbnailgridcontaner
 {
 
-width:80%!important;
+    width:80%!important;
 }
 End Copy & Paste Above this line
 Save this change. When you are testing your view, make sure that you refresh the page. If you mess it up, just delete it and start over.
@@ -209,6 +209,8 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 1. This is a screenshot taken from the web site. Please visit http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/ to see the thumbnail demos.
 
 2. To view or modify "Blog Pages Show at most, go to the reading section of your Wordpress Settings
+
+3. Settings page - Settings for the Thumbnail Grid can be found under the Settings Menu
 
 == Changelog ==
 
@@ -236,5 +238,7 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 == Arbitrary section ==
 * = 3.1.1 
 * Remove nags.
+* = 4.0
+* Add settings & setting page for loading style sheets in header or footer - option to load compressed style sheet. 
 
 Need more? Customization is available. Contact adrian@nomadcoder.com for more information.
