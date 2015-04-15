@@ -1,6 +1,6 @@
 ﻿=== Plugin Name ===
 Contributors: nomadcoder
-Donate link: http://www.nomadcoder.com
+Donate link: https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=gqjtYzw8TuOyQvmQDK0qTTaTyzz5z36k0xjc6N4cTQ8KzTc7asPw59FljVq&dispatch=5885d80a13c0db1f8e263663d3faee8d96f000117187ac9edec8a65b311f447e
 Tags: featured image, thumbnail grid
 Requires at least: 
 Tested up to: 4.1.1
@@ -20,6 +20,7 @@ Please be kind and rate this plugin. Everything helps!
 == Description ==
 Version 5.0
 
+Donations or extended support are appreciated!  
 
 This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
 
