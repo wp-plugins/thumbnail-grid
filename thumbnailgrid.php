@@ -3,7 +3,7 @@
 Plugin Name: Featured Image Thumbnail Grid
 Plugin URI: http://www.shooflysolutions.com/premium-thumbnail-grid-wordpress-plugin/
 Description: This is the new version of the Featured Image Thumbnail Grid. Display Thumbnail Grid using Featured Images
-Version: 4.0
+Version: 5
 Author: A. R. Jones
 Author URI: http://shooflysolutions.com
 */
@@ -115,13 +115,14 @@ class sfly_tbgrid_admin
             <div><a href="http://www.shooflysolutions.com/software/featured-image-thumbnail-grid-for-wordpress/#a1" target="_blank">Installation </a></div>
             <div><a href="http://www.shooflysolutions.com/software/featured-image-thumbnail-grid-for-wordpress/#a5" target="_blank">Settings</a></div>
             <div><a href="http://www.shooflysolutions.com/software/featured-image-thumbnail-grid-for-wordpress/#a2" target="_blank">Overview</a></div>
-            <div><a href="http://www.shooflysolutions.com/software/featured-image-thumbnail-grid-for-wordpress/#a3" target="_blank">Shortcodes</a></div>
+            <div><a href="http://www.shooflysolutions.com/shortcodes/" target="_blank">Shortcodes</a></div>
             <div><a href="http://www.shooflysolutions.com/?p=237" target="_blank">Filters</a></div>
             <div><a href="http://www.shooflysolutions.com/featured-image-thumbnail-grid-extensions/" target="_blank">Extensions</a></div>
             <div><a href="http://www.shooflysolutions.com/faqs/" target="_blank">Faqs</a></div>
      
             <div>
                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <h3>Donations for extended support are appreciated!</h3>
                 <input type="hidden" name="cmd" value="_s-xclick">
                 <input type="hidden" name="hosted_button_id" value="NERK4N9L2QSUL">
                 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -176,7 +177,7 @@ function thumbnailgrid_handler($atts) {
   
 
     class sfly_thumbnailgrid
-{
+    {
     public function __construct()
     {
 
@@ -221,6 +222,7 @@ function thumbnailgrid_handler($atts) {
     }
     function getGridNavContent($page, $location, $max)
     {   //if $page is blank or null, grid is not paged and nothing should be returned
+     
 
         $content = apply_filters('sfly_tbgrid_grid_nav_content', $page, $location, $max);
 
@@ -263,25 +265,58 @@ function thumbnailgrid_handler($atts) {
   
         return $gridstyle;
     }
+    function todayArray()
+    {
+        $today = getdate();
+        return array(
+                'year'  => $today['year'],
+			    'month' => $today['mon'],
+			    'day'   => $today['mday'],
+               );
+    }
     function getSettings(&$atts)
     {
          $atts = apply_filters( 'sfly_tbgrd_settings', $atts);//do something with settings
          $settings = new stdClass;
+       
          extract( shortcode_atts( array(
-                'height' => '',                
-                'width' => '',
-                'gridwidth' =>'',
-                'showcaption' => 'TRUE',
-                'captionheight' => '',
-                'captionwidth' => '',
-                'wraptext' => 'FALSE',
-                'aligngrid' => '',
-               'imagesize' => 'thumbnail',
-                'cellwidth' => '',
-                'cellheight' => ''
-
-	        ), $atts ) );
+            'height' => '',                
+            'width' => '',
+            'gridwidth' =>'',
+            'showcaption' => 'TRUE',
+            'captionheight' => '',
+            'captionwidth' => '',
+            'wraptext' => 'FALSE',
+            'aligngrid' => '',
+            'imagesize' => 'thumbnail',
+            'cellwidth' => '',
+            'cellheight' => '',
+            'before' => '',
+            'after' => '',
+            'post__in' => '',
+            'post__not_in' => '',
+       /*     'category__in' => '',
+            'category__not_in' => '',
+            'tag__in' => '',
+            'tag__not_in' => '',
+            'author__in' => '',
+            'author__not_in' => '',
+            'category__and' => '',
+            'tag__and' => '',*/
+            'tag_slug__and' => '',
+            'tag_slug__in' => '',
+            'post_parent__in' => '',
+            'post_parent__not_in' => '',
+    /*        'month' => '',
+            'day' => '',
+            'year' => '',*/
+            'today' => FALSE,
+            'inclusive' => FALSE,
+            'debug_query' => FALSE
          
+             ), $atts ) );
+	      
+          
            unset($atts["height"]);
            unset($atts["width"]);
            unset($atts["gridwidth"]);
@@ -290,12 +325,99 @@ function thumbnailgrid_handler($atts) {
            unset($atts['captionwidth']);
            unset($atts['wraptext']);
            unset($atts['aligngrid']);
-           unset($atts['imagesize']);
+           unset($atts['post__in']);
+           unset($atts['post__not_in']);
+/*           unset($atts['category__in']);
+           unset($atts['category__not_in']);
+           unset($atts['tag__in']);
+           unset($atts['tag__not_in']);
+           unset($atts['author__in']);
+           unset($atts['author__not_in']);
+           unset($atts['category__and']);
+           unset($atts['tag__and']);*/
+           unset($atts['tag_slug__and']);
+           unset($atts['tag_slug__in']);
+           unset($atts['post_parent__in']);
+           unset($atts['post_parent__not_in']);
+      /*     unset($atts['day']);
+           unset($atts['month']);
+           unset($atts['year']);*/
+           unset($atts['before']);
+           unset($atts['after']);
+           unset($atts['today']);
+           unset($atts['inclusive']);
+            unset($atts['date_query']); //this is not a valid attribute
+       
+           if ($after || $before )
+           {
+               $before_after = array();
+               if ($after == 'today')
+                    $after = $this->todayArray();
+                if ($before == 'today')
+                    $before = $this->todayArray();
+
+                if ($after)
+                    $before_after['after'] = $after;
+                if ($before)
+                    $before_after['before'] = $before;
+                
+                if ($inclusive != FALSE)
+                    $before_after['inclusive'] = TRUE;
+               
+                $atts['date_query'] = $before_after;
+                
+           }
+ /*          if ($month || $day || $year)
+           {
+               $day_arry = array();
+               if ($day)
+                $day_arry['day'] = $day;
+               if ($month)
+                $day_arry['month'] = $month;
+               if ($year)
+                $day_arry['year'] = $year;
+               $atts['date_query'] = $day_arry;
+           }*/
+           if ($today != FALSE)
+           {
+               $atts['date_query'] = $this->todayArray();
+           }
+         
+           if ($post__in)
+            $atts['post__in'] =  explode(",",  $post__in);
+           if ($post__not_in)
+            $atts['post__not_in'] = explode(",", $post__not_in);
+ /*          if ($category__in)
+            $atts['category__in'] =  explode(",",  $category__in);
+           if ($category__not_in)
+            $atts['category__not_in'] = explode(",", $category__not_in);
+           if ($tag__in)
+            $atts['tag__in'] =  explode(",",  $tag__in);
+           if ($tag__not_in)
+            $atts['tag__not_in'] = explode(",", $tag__not_in);
+           if ($author__in)
+            $atts['author__in'] =  explode(",",  $author__in);
+           if ($author__not_in)
+            $atts['author__not_in'] = explode(",", $author__not_in);
+           if ($category__and)
+             $atts['category__and'] = explode(",", $category__and);
+           if ($tag__and)
+            $atts['tag__and'] = explode(",", $tag__and);*/
+           if ($tag_slug__and)
+            $atts['tag_slug__and'] = explode(",", $tag_slug__and);
+           if ($tag_slug__in)
+            $atts['tag_slug__in'] = explode(",", $tag_slug__in);
+           if ($post_parent__in)
+             $atts['post_parent__in'] = explode(",", $post_parent__in);
+           if ($post_parent__not_in)
+            $atts['post_parent__not_in'] = explode($post_parent__not_in);
+
+
            $settings->height = $height;
            $settings->width = $width;
            $settings->gridwidth = $gridwidth;
            $settings->imagesize = $imagesize;
-
+           $settings->debug = $debug_query;
            $griditemstyle = "";
            if ($cellwidth)
                 $griditemstyle .= "width:" . $cellwidth . ";";
@@ -337,13 +459,16 @@ function thumbnailgrid_handler($atts) {
     function thumbnailgrid_function($atts) {
         
         wp_reset_query();
-        $this->thumbnailgrid_addqueryfilter();
+       
          $settings = new stdClass();
-        
+     
         if ($atts)
         {
            $settings = $this->getSettings($atts);    
+               $this->thumbnailgrid_addqueryfilter($settings->debug);
         }
+        else
+            $this->thumbnailgrid_addqueryfilter();
         if ($atts)
         {
            $the_query = new WP_Query($atts);
@@ -444,11 +569,14 @@ function thumbnailgrid_handler($atts) {
          $ret .=  '</div></div>';
         return $ret;
     }
-    function thumbnailgrid_addqueryfilter(){
+    function thumbnailgrid_addqueryfilter($debug_query = FALSE){
         add_filter('posts_join', array($this, 'new_join') );
         add_filter('posts_orderby', array($this, 'new_order') );
         add_filter('posts_where', array($this, 'new_where'));
         add_filter('posts_fields', array($this, 'new_fields'));
+         
+        if ($debug_query != FALSE)
+            add_filter( 'posts_request', array($this, 'dump_request' ));
     }
     function thumbnailgrid_removequeryfilter(){
         remove_filter('posts_join', array($this, 'new_join') );
@@ -475,4 +603,13 @@ function thumbnailgrid_handler($atts) {
         $oby = apply_filters('shfly_tgrd_posts_orderby', $oby);
         return ($oby);
    }
+
+ 
+
+    function dump_request( $input ) {
+
+    var_dump($input);
+
+    return $input;
+}
 }?>
