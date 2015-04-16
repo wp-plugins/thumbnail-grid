@@ -239,5 +239,6 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 * Remove nags.
 * = 4.0
 * Add settings & setting page for loading style sheets in header or footer - option to load compressed style sheet. 
+
 == Arbitrary section ==
 Need more? Customization is available. Contact adrian@nomadcoder.com for more information.
