@@ -1,9 +1,9 @@
 ﻿=== Plugin Name ===
 Contributors: nomadcoder
-Donate link: https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=gqjtYzw8TuOyQvmQDK0qTTaTyzz5z36k0xjc6N4cTQ8KzTc7asPw59FljVq&dispatch=5885d80a13c0db1f8e263663d3faee8d96f000117187ac9edec8a65b311f447e
+Donate link: http://www.nomadcoder.com
 Tags: featured image, thumbnail grid
 Requires at least: 
-Tested up to: 4.1.1
+Tested up to: 4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,9 +18,8 @@ Please be kind and rate this plugin. Everything helps!
 
 
 == Description ==
-Version 5.0
+Version 4.0
 
-Donations or extended support are appreciated!  
 
 This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
 
@@ -56,6 +55,7 @@ Will display the thumbnails for the 5 most recent posts from the category with t
 
 [thumbnailgrid]
 Will display the thumbnails using the default value in the Reading settings Blog pages show at most.
+
 
 Bookmarks (Links)
 
@@ -103,36 +103,6 @@ When the gridwidth value is set, set this value to left, right or center
 imagesize
 Media Image sizes are configured in the wordpress admin panel under Settings/Media. You can use any size in the plugin. The default value is ‘thumb’. thumb thumbnail medium large post-thumbnail (To proportionately size images, try setting the height="100%" width="auto")
 
-Added support for codex features that were not loading through the shortcode:
-
-before 
-show posts before a specific date. As a feature of this plugin, you can set this field to before="today"
-
-after 
-show posts after a specific date. As a feature of this plugin, you can set this field to after="today"
-
-inclusive 
-include the before and/or after date in the query
-
-post__not_in
-exclude posts (comma delimited id's) in this list
-
-post__in
-include posts (comma delimited id's) in this list
-
-post_parent__in
-include posts (comma delimited id's) with parent id's in this list.  Would be handy for post_type="page" 
-post_parent__not_in
-exclude posts (comma delimited id's) with parent id's in this list.  Would be handy for post_type="page" 
-
-tag_slug__and
-include posts (comma delimited strings) with tags that match all of the tag slugs in this list. 
-
-tag_slug__in
-exclude posts (comma delimited strings) that have a tag that matches any of the tags in this list
-
-debug_query 
-for advanced users or upon request for support purposes, set debug_query=true to view the SQL query.
 
 == Installation ==
 
@@ -265,13 +235,9 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 * Remove update checker
 * = 3.1
 * Another Version number change to try to get plugin back onto wordpress repository?
-== Arbitrary section ==
 * = 3.1.1 
 * Remove nags.
 * = 4.0
 * Add settings & setting page for loading style sheets in header or footer - option to load compressed style sheet. 
-* = 5.0
-* Add support for codex features that were not functional (page__in, before, after, tag_slug__and, tag_slug__in, post_parent__in, post_parent__not_in )
-* Add ability to display posts created before or after a today.
-* Add code to enable dump of query (debug_query)
+== Arbitrary section ==
 Need more? Customization is available. Contact adrian@nomadcoder.com for more information.
