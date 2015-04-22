@@ -3,7 +3,7 @@
 Plugin Name: Featured Image Thumbnail Grid
 Plugin URI: http://www.shooflysolutions.com/premium-thumbnail-grid-wordpress-plugin/
 Description: This is the new version of the Featured Image Thumbnail Grid. Display Thumbnail Grid using Featured Images
-Version: 5
+Version: 5.1
 Author: A. R. Jones
 Author URI: http://shooflysolutions.com
 */
@@ -77,6 +77,7 @@ class sfly_tbgrid_admin
      
         register_setting('sfly_thumbnailgrid', 'sfly_tbgrid_load_styles' );
         register_setting('sfly_thumbnailgrid', 'sfly_tbgrid_compress' );
+        register_setting('sfly_thumbnailgrid', 'sfly_tbgrid_generic_thumb');
 
     }
     function sfly_display_menu_settings() {
@@ -91,6 +92,7 @@ class sfly_tbgrid_admin
                    settings_fields( 'sfly_thumbnailgrid' ); //must be after the form tag
                    $css_load = get_option('sfly_tbgrid_load_styles', 'header'); //get the options
                    $css_compress = get_option('sfly_tbgrid_compress', '0');
+               
                 ?>
                 <h2>Shoofly Thumbnail Grid Settings</h2>
                 <div style="padding-bottom: 10px">
@@ -104,8 +106,9 @@ class sfly_tbgrid_admin
             
                     <div>
                     <input type="radio" id="sfly_tbgrid_load_styles" name="sfly_tbgrid_load_styles"  <?php if($css_load == 'footer') echo 'checked="checked"'; ?> value="footer">Load in footer - this setting loads the styleshee on pages where thumbnail grid is in use. Loading in the footer. Thumbnails may take a second to properly style</input>
-                </div>
-         
+                
+                             </div>
+            
                 </div>
                  <div style="text-align:center; padding:10px;"><input type="submit" name="Submit" value="Update" /></div></form>
             </div>
@@ -235,13 +238,10 @@ function thumbnailgrid_handler($atts) {
         
            if ($showcaption == 'FALSE' || $showcaption == 'false')
            {
-              
                 $titlestyle .=  "display:none";
-               
            }
            else
            {
- 
                if ($width != '' && $width != 'auto')
                     $titlestyle .= "width:" . $width . ';'; 
               
@@ -276,10 +276,9 @@ function thumbnailgrid_handler($atts) {
     }
     function getSettings(&$atts)
     {
-         $atts = apply_filters( 'sfly_tbgrd_settings', $atts);//do something with settings
+      
          $settings = new stdClass;
-       
-         extract( shortcode_atts( array(
+         $atts = shortcode_atts( array(
             'height' => '',                
             'width' => '',
             'gridwidth' =>'',
@@ -287,6 +286,7 @@ function thumbnailgrid_handler($atts) {
             'captionheight' => '',
             'captionwidth' => '',
             'wraptext' => 'FALSE',
+            'posts_per_page' => -1,
             'aligngrid' => '',
             'imagesize' => 'thumbnail',
             'cellwidth' => '',
@@ -295,58 +295,40 @@ function thumbnailgrid_handler($atts) {
             'after' => '',
             'post__in' => '',
             'post__not_in' => '',
-       /*     'category__in' => '',
-            'category__not_in' => '',
-            'tag__in' => '',
-            'tag__not_in' => '',
-            'author__in' => '',
-            'author__not_in' => '',
-            'category__and' => '',
-            'tag__and' => '',*/
+    
             'tag_slug__and' => '',
             'tag_slug__in' => '',
             'post_parent__in' => '',
             'post_parent__not_in' => '',
-    /*        'month' => '',
-            'day' => '',
-            'year' => '',*/
+   
             'today' => FALSE,
             'inclusive' => FALSE,
             'debug_query' => FALSE
          
-             ), $atts ) );
-	      
-          
+             ), $atts  );
+	         $atts = apply_filters( 'sfly_tbgrd_settings', $atts);//do something with settings
+           extract($atts);
            unset($atts["height"]);
            unset($atts["width"]);
            unset($atts["gridwidth"]);
            unset($atts['showcaption']);
            unset($atts['captionheight']);
            unset($atts['captionwidth']);
+           unset($atts['cellheight']);
+           unset($atts['cellwidth']);
            unset($atts['wraptext']);
            unset($atts['aligngrid']);
            unset($atts['post__in']);
            unset($atts['post__not_in']);
-/*           unset($atts['category__in']);
-           unset($atts['category__not_in']);
-           unset($atts['tag__in']);
-           unset($atts['tag__not_in']);
-           unset($atts['author__in']);
-           unset($atts['author__not_in']);
-           unset($atts['category__and']);
-           unset($atts['tag__and']);*/
            unset($atts['tag_slug__and']);
            unset($atts['tag_slug__in']);
            unset($atts['post_parent__in']);
            unset($atts['post_parent__not_in']);
-      /*     unset($atts['day']);
-           unset($atts['month']);
-           unset($atts['year']);*/
            unset($atts['before']);
            unset($atts['after']);
            unset($atts['today']);
            unset($atts['inclusive']);
-            unset($atts['date_query']); //this is not a valid attribute
+            unset($atts['debug_query']); //this is not a valid attribute
        
            if ($after || $before )
            {
@@ -367,17 +349,7 @@ function thumbnailgrid_handler($atts) {
                 $atts['date_query'] = $before_after;
                 
            }
- /*          if ($month || $day || $year)
-           {
-               $day_arry = array();
-               if ($day)
-                $day_arry['day'] = $day;
-               if ($month)
-                $day_arry['month'] = $month;
-               if ($year)
-                $day_arry['year'] = $year;
-               $atts['date_query'] = $day_arry;
-           }*/
+ 
            if ($today != FALSE)
            {
                $atts['date_query'] = $this->todayArray();
@@ -387,22 +359,7 @@ function thumbnailgrid_handler($atts) {
             $atts['post__in'] =  explode(",",  $post__in);
            if ($post__not_in)
             $atts['post__not_in'] = explode(",", $post__not_in);
- /*          if ($category__in)
-            $atts['category__in'] =  explode(",",  $category__in);
-           if ($category__not_in)
-            $atts['category__not_in'] = explode(",", $category__not_in);
-           if ($tag__in)
-            $atts['tag__in'] =  explode(",",  $tag__in);
-           if ($tag__not_in)
-            $atts['tag__not_in'] = explode(",", $tag__not_in);
-           if ($author__in)
-            $atts['author__in'] =  explode(",",  $author__in);
-           if ($author__not_in)
-            $atts['author__not_in'] = explode(",", $author__not_in);
-           if ($category__and)
-             $atts['category__and'] = explode(",", $category__and);
-           if ($tag__and)
-            $atts['tag__and'] = explode(",", $tag__and);*/
+ 
            if ($tag_slug__and)
             $atts['tag_slug__and'] = explode(",", $tag_slug__and);
            if ($tag_slug__in)
@@ -453,33 +410,28 @@ function thumbnailgrid_handler($atts) {
             //Get the title link style
            $settings->titlelinkstyle = $this->getStyle('sfly_tbgrid_titlelink_style', $settings->titlelinkstyle);
            $settings->titlelinkclass = $this->getStyle('sfly_tbgrid_titlelink_class', '');
-           
+        
            return $settings;
         }
     function thumbnailgrid_function($atts) {
         
         wp_reset_query();
        
-         $settings = new stdClass();
+        $settings = new stdClass();
      
         if ($atts)
         {
            $settings = $this->getSettings($atts);    
-               $this->thumbnailgrid_addqueryfilter($settings->debug);
-        }
-        else
-            $this->thumbnailgrid_addqueryfilter();
-        if ($atts)
-        {
-           $the_query = new WP_Query($atts);
         }
         else
         {
+           $settings = $this->getSettings($atts);  
+        }
          
-           $the_query = new WP_Query('posts_per_page  = -1');
-        }
         // The Loop
-        
+        $this->thumbnailgrid_addqueryfilter($settings->debug);
+        $the_query = new WP_Query($atts);
+
         $this->thumbnailgrid_removequeryfilter();
         $max = $the_query->max_num_pages;
        
@@ -487,9 +439,10 @@ function thumbnailgrid_handler($atts) {
           $gridnavcontenttop = $this->getGridNavContent($atts['paged'], 'top', $max);
         else
           $gridnavcontenttop = '';
-       $ret = '<div class="thumbnailblock">' . $gridnavcontenttop .
+          $ret = '<div class="thumbnailblock">' . $gridnavcontenttop .
             '<div ' . $settings->gridclass . ' ' .$settings->gridstyle .'>';
-        while ( $the_query->have_posts() ) :$the_query->the_post();
+             
+         while ( $the_query->have_posts() ) :$the_query->the_post();
            
             $thumb = new stdClass;
             $thumb->permalink = get_permalink();
@@ -497,8 +450,11 @@ function thumbnailgrid_handler($atts) {
             $thumb->extra = apply_filters('sfly_tbgrid_extra_info', '');
             $thumb->target = '';
             $thumb->image_id = get_post_thumbnail_id();
+            
             $image_url = wp_get_attachment_image_src($thumb->image_id, $settings->imagesize, true);
-            $thumb->image_url = $image_url[0];
+          
+            $thumb->image_url = $image_url[0] ;
+         
             $ret .= $this->theThumbnail($settings, $thumb);
                        
         endwhile;
@@ -521,11 +477,12 @@ function thumbnailgrid_handler($atts) {
 	     */
     public function theThumbnail($settings, $thumb)
     {
+        
             if ($thumb->target != '')
             {
                 $thumb->target = ' target="' .$target .'"';
             }
-            if ($thumb->image_id)
+            if ($thumb->image_url)
                 $thumbnail = '<img '. $settings->imageclass .' src="' .$thumb->image_url .'"' .$settings->imagestyle . '/>';
             else
                 $thumbnail = '<div ' . $settings->imagestyle .'></div>';

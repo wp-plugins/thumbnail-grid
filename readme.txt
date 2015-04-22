@@ -3,7 +3,7 @@ Contributors: nomadcoder
 Donate link: https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=gqjtYzw8TuOyQvmQDK0qTTaTyzz5z36k0xjc6N4cTQ8KzTc7asPw59FljVq&dispatch=5885d80a13c0db1f8e263663d3faee8d96f000117187ac9edec8a65b311f447e
 Tags: featured image, thumbnail grid
 Requires at least: 
-Tested up to: 4.1.1
+Tested up to: 4.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Please be kind and rate this plugin. Everything helps!
 
 
 == Description ==
-Version 5.0
+Version 5.1
 
 Donations or extended support are appreciated!  
 
@@ -273,6 +273,10 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 * Add support for codex features that were not functional (page__in, before, after, tag_slug__and, tag_slug__in, post_parent__in, post_parent__not_in )
 * Add ability to display posts created before or after a today.
 * Add code to enable dump of query (debug_query)
+* = 5.1
+* Fix thumbnail grid with no paramaters does not display with defaults.
+* Default thumbnail (wp-includes/media/default.png) now displays for posts created without a featured image media id. 
+
 == Arbitrary section ==
 
 Need more? Customization is available. Contact adrian@nomadcoder.com for more information.
