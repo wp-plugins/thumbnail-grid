@@ -3,7 +3,7 @@
 Plugin Name: Featured Image Thumbnail Grid
 Plugin URI: http://www.shooflysolutions.com/premium-thumbnail-grid-wordpress-plugin/
 Description: This is the new version of the Featured Image Thumbnail Grid. Display Thumbnail Grid using Featured Images
-Version: 5.1
+Version: 5.2
 Author: A. R. Jones
 Author URI: http://shooflysolutions.com
 */
@@ -274,11 +274,9 @@ function thumbnailgrid_handler($atts) {
 			    'day'   => $today['mday'],
                );
     }
-    function getSettings(&$atts)
+    function defaults($atts)
     {
-      
-         $settings = new stdClass;
-         $atts = shortcode_atts( array(
+        return shortcode_atts( array(
             'height' => '',                
             'width' => '',
             'gridwidth' =>'',
@@ -306,8 +304,21 @@ function thumbnailgrid_handler($atts) {
             'debug_query' => FALSE
          
              ), $atts  );
-	         $atts = apply_filters( 'sfly_tbgrd_settings', $atts);//do something with settings
-           extract($atts);
+    }
+    function getSettings(&$atts)
+    {
+     
+         $settings = new stdClass;
+          if (!$atts)
+                $atts = $this->defaults($atts);
+      
+        extract($this->defaults($atts));
+          
+           
+	       $atts = apply_filters( 'sfly_tbgrd_settings', $atts);//do something with settings
+         
+         
+          
            unset($atts["height"]);
            unset($atts["width"]);
            unset($atts["gridwidth"]);
@@ -410,7 +421,7 @@ function thumbnailgrid_handler($atts) {
             //Get the title link style
            $settings->titlelinkstyle = $this->getStyle('sfly_tbgrid_titlelink_style', $settings->titlelinkstyle);
            $settings->titlelinkclass = $this->getStyle('sfly_tbgrid_titlelink_class', '');
-        
+           
            return $settings;
         }
     function thumbnailgrid_function($atts) {
@@ -419,14 +430,9 @@ function thumbnailgrid_handler($atts) {
        
         $settings = new stdClass();
      
-        if ($atts)
-        {
-           $settings = $this->getSettings($atts);    
-        }
-        else
-        {
-           $settings = $this->getSettings($atts);  
-        }
+     
+       $settings = $this->getSettings($atts);    
+      
          
         // The Loop
         $this->thumbnailgrid_addqueryfilter($settings->debug);

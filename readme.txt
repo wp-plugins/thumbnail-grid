@@ -276,6 +276,8 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 * = 5.1
 * Fix thumbnail grid with no paramaters does not display with defaults.
 * Default thumbnail (wp-includes/media/default.png) now displays for posts created without a featured image media id. 
+* =5.2
+* Fix broken settings
 
 == Arbitrary section ==
 
