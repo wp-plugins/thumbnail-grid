@@ -18,7 +18,7 @@ Please be kind and rate this plugin. Everything helps!
 
 
 == Description ==
-Version 5.1
+Version 5.2
 
 Donations or extended support are appreciated!  
 
