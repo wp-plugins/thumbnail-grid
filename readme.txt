@@ -166,6 +166,8 @@ Unzip the file. Using FTP, upload the thumbnailgrid folder to the contents/plugi
 
 == Frequently Asked Questions ==
 
+Please visit the FAQ page on our site at <a href="http://www.shooflysolutions.com/faq/">http://www.shooflysolutions.com/faq/</a>
+
 - Only 10 thumbnails display at once no matter what I do
 
 WordPress uses posts per page to control how many posts show up (In "Readings Settings", look at "Blog pages show at most". You will see that it is set to 10.
@@ -236,11 +238,11 @@ Example 2:
 End Copy & Paste Above this line
 Save this change. When you are testing your view, make sure that you refresh the page. If you mess it up, just delete it and start over.
 
-Visit the Web Site (and the Support page on Wordpress) for more tips: http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/
+Visit the Web Site (and the Support page on Wordpress) for more tips: http://www.shooflysolutions.com/software/featured-image-thumbnail-grid-for-wordpress/
 
 == Screenshots ==
 
-1. This is a screenshot taken from the web site. Please visit http://www.nomadcoder.com/thumbnail-grid-wordpress-plugin/ to see the thumbnail demos.
+1. This is a screenshot taken from our old web site. Please visit http://www.shooflysolutions.com/shortcodes/ to see the thumbnail demos.
 
 2. To view or modify "Blog Pages Show at most, go to the reading section of your Wordpress Settings
 
@@ -249,8 +251,8 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 == Changelog ==
 * =5.3
 * Grid now has a class for the page. This is only unique if there is only one grid on the page. 
-* Add new filter to modify the title (See example on web site)
-* Fix filter for text under the title (See example on web site)
+* Add new filter to modify the title 
+* Fix filter for text under the title
 * New param maxgridwidth. You can now set maxgridwidth instead (or with) width. This will enable grid to wrap when using aligngrid. 
 * Fix post_parent__not_in
 * New param aligngrid="autocenter" - Uses jQuery to keep the grid centered for themes where centering is not working. 
@@ -293,4 +295,4 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 
 == Arbitrary section ==
 
-Need more? Customization is available. Contact adrian@nomadcoder.com for more information.
+Need more? Customization is available. Contact sales@shooflysolutions.com for more information.
