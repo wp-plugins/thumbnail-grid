@@ -3,12 +3,13 @@ Contributors: nomadcoder
 Donate link: https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=gqjtYzw8TuOyQvmQDK0qTTaTyzz5z36k0xjc6N4cTQ8KzTc7asPw59FljVq&dispatch=5885d80a13c0db1f8e263663d3faee8d96f000117187ac9edec8a65b311f447e
 Tags: featured image, thumbnail grid
 Requires at least: 
-Tested up to: 4.2
+Tested up to: 4.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+Visit the web site for detailed examples.
 
-This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
+This plugin gives you access to two simple shortcodes that display post thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the default thumbnail (if it exists) or title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
 
 For quicker support, please visit the <a href="http://www.shooflysolutions.com/software/featured-image-thumbnail-grid-for-wordpress/">NEW plugin web page</a>. 
  
@@ -18,9 +19,9 @@ Please be kind and rate this plugin. Everything helps!
 
 
 == Description ==
-Version 5.2
+Version 5.3
 
-Donations for extended support are appreciated but never required!  
+Donations for extended support are appreciated but are never required!  
 
 This plugin gives you access to two simple shortcodes that display posts and bookmark thumbnails in a grid. The plugin uses the featured image thumbnail if one exists. If one does not exist, the title will be displayed instead. Use the category feature to ensure that all of the posts that you want to display in this manner have thumbnails.
 
@@ -85,6 +86,9 @@ The width of the thumbnail image. This value defaults to the width of the thumbn
 gridwidth
 The width of the grid. this value defaults to the width of the grid area or to the setting in the style sheet.
 
+maxgridwidth
+The maximum width of the grid. This is the better option to use when aligning grid left/right/center if you want the grid to wrap
+
 showcaption 
 Set showcaption=FALSE to hide the captions showcaption defaults to TRUE
 
@@ -98,7 +102,7 @@ wraptext
 Wrap the text in the caption. Normally the text is limited to one line and overflow is indicated by an elipses. Please note that, to avoid a misaligned grid, you should set a caption height when wrapping text in a grid that has more than one row. wraptext defaults to FALSE
 
 aligngrid
-When the gridwidth value is set, set this value to left, right or center 
+When the gridwidth value is set, set this value to left, right,  center or autocenter (uses jQuery) 
 
 imagesize
 Media Image sizes are configured in the wordpress admin panel under Settings/Media. You can use any size in the plugin. The default value is ‘thumb’. thumb thumbnail medium large post-thumbnail (To proportionately size images, try setting the height="100%" width="auto")
@@ -243,41 +247,49 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 3. Settings page - Settings for the Thumbnail Grid can be found under the Settings Menu
 
 == Changelog ==
+* =5.3
+* Grid now has a class for the page. This is only unique if there is only one grid on the page. 
+* Add new filter to modify the title (See example on web site)
+* Fix filter for text under the title (See example on web site)
+* New param maxgridwidth. You can now set maxgridwidth instead (or with) width. This will enable grid to wrap when using aligngrid. 
+* Fix post_parent__not_in
+* New param aligngrid="autocenter" - Uses jQuery to keep the grid centered for themes where centering is not working. 
+* Another fix for empty settings
+* =5.2
+* Fix broken settings
+* = 5.1
+* Fix thumbnail grid with no paramaters does not display with defaults.
+* Default thumbnail (wp-includes/media/default.png) now displays for posts created without a featured image media id. * = 5.0
+* Add support for codex features that were not functional (page__in, before, after, tag_slug__and, tag_slug__in, post_parent__in, post_parent__not_in )
+* Add ability to display posts created before or after a today.
+* Add code to enable dump of query (debug_query)* = 4.0
+* Add settings & setting page for loading style sheets in header or footer - option to load compressed style sheet.
 
-= 1.0 =
-* Original Release
-= 1.1 =
-* Remove extra quote after link title
-= 1.2 =
-* Fix incorrect thumbnail image loading
-= 2.0 =
-* Add functionality that enables users to center grid. See instructions.
-* Add height & width attributes to shortcode for individual thumbnail grid.
-= 2.1 =
-* Fixes for height & width, minor modifications
-* Add gridwidth attribute to shortcode
-* = 2.1.1 - Fix to style sheet
-* = 2.1.2 - Remove comments that (we think) wordpress is changing to <p>carriage returns.</p>
+* = 3.1.1 
+* Remove nags.
+* = 3.1
+* Another Version number change to try to get plugin back onto wordpress repository?
+* = 3.0.1 -
+* Remove update checker
 * = 3.0.0 - 
 * Added filters to plugin for Extensions.
 * New shortcodes aligngrid, gridwidth, captionheight, displaycaption and imagesize.
-* = 3.0.1 -
-* Remove update checker
-* = 3.1
-* Another Version number change to try to get plugin back onto wordpress repository?
-* = 3.1.1 
-* Remove nags.
-* = 4.0
-* Add settings & setting page for loading style sheets in header or footer - option to load compressed style sheet. 
-* = 5.0
-* Add support for codex features that were not functional (page__in, before, after, tag_slug__and, tag_slug__in, post_parent__in, post_parent__not_in )
-* Add ability to display posts created before or after a today.
-* Add code to enable dump of query (debug_query)
-* = 5.1
-* Fix thumbnail grid with no paramaters does not display with defaults.
-* Default thumbnail (wp-includes/media/default.png) now displays for posts created without a featured image media id. 
-* =5.2
-* Fix broken settings
+* = 2.1.2 - Remove comments that (we think) wordpress is changing to <p>carriage returns.</p>
+* = 2.1.1 - Fix to style sheet
+= 2.1 =
+* Fixes for height & width, minor modifications
+* Add gridwidth attribute to shortcode
+= 2.0 =
+* Add functionality that enables users to center grid. See instructions.
+* Add height & width attributes to shortcode for individual thumbnail grid.
+= 1.2 =
+* Fix incorrect thumbnail image loading
+= 1.1 =
+* Remove extra quote after link title
+= 1.0 =
+* Original Release
+ 
+
 
 == Arbitrary section ==
 

@@ -32,8 +32,6 @@ div.postimage-title a
 }
 .griditemleft {
 	float: left;
-/*	width: 150px;*/
-/*height: 150px;*/
 	margin: 10px;
 }
 
@@ -50,4 +48,4 @@ div.postimage-title a
     display: inline-block;
 }
 .thumbnailgridcontainer:after, .thumbnailgridcontainer:before, .thumbnailblock:after { content: "."; visibility: hidden; display: block; clear: both; height: 0; font-size: 0; }
-/*End center thumbnail grid*/
+
