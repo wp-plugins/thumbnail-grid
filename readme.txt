@@ -3,7 +3,7 @@ Contributors: nomadcoder
 Donate link: https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=gqjtYzw8TuOyQvmQDK0qTTaTyzz5z36k0xjc6N4cTQ8KzTc7asPw59FljVq&dispatch=5885d80a13c0db1f8e263663d3faee8d96f000117187ac9edec8a65b311f447e
 Tags: featured image, thumbnail grid
 Requires at least: 
-Tested up to: 4.2.2
+Tested up to: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -252,7 +252,7 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 * =5.4 
 * Add missing javascript for autocenter
 * Fix autocenter when number of items in grid is less than can fit in content
-* Fix some of the __not_in code
+* Fix some of the __not_in code, not working natively
 * =5.3
 * Grid now has a class for the page. This is only unique if there is only one grid on the page. 
 * Add new filter to modify the title 
