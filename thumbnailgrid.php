@@ -3,7 +3,7 @@
 Plugin Name: Featured Image Thumbnail Grid
 Plugin URI: http://www.shooflysolutions.com/premium-thumbnail-grid-wordpress-plugin/
 Description: Display Thumbnail Grid using Featured Images
-Version: 5.3
+Version: 5.4
 Author: A. R. Jones
 Author URI: http://shooflysolutions.com
 */
@@ -231,8 +231,13 @@ function defaults($atts)
         'after' => '',                  //after date - can be set to 'today'
         'post__in' => '',               //Comma delimited list of post id's to be displayed
         'post__not_in' => '',           //Display all posts except posts in this Comma delimited list
+        'tag__not_in' => '',            //Display all posts except posts in with tags in this comma delimited list (ids)
+        'category__not_in' => '',       //Display all posts except posts with categories in this comma delimited lists
+        'category__and' => '',          //Display all posts that are in all of these categories
+        'author__not_in' => '',        //Display all posts except posts by these authors (ids)
         'tag_slug__and' => '',          //Comma delimited list of tags to determine posts displayed
         'tag_slug__in' => '',           //Commad delimited list of tags to ignore
+        'tag__and' => '',               //display posts that contain all of these tags
         'post_parent__in' => '',        //Comma delimited list of parent id's to determine posts displayed (use for pages)
         'post_parent__not_in' => '',    //Comma delimited of parent id's to ignore
         'inclusive' => FALSE,           //Used with the before and after dates to make those dat
@@ -270,6 +275,11 @@ function getSettings(&$atts)
         unset($atts['post__not_in']);
         unset($atts['tag_slug__and']);
         unset($atts['tag_slug__in']);
+        unset($atts['tag__not_in']);
+        unset($atts['tag__and']);
+        unset($atts['category__not_in']);
+        unset($atts['category__and']);
+        unset($atts['author__not_in']);
         unset($atts['post_parent__in']);
         unset($atts['post_parent__not_in']);
         unset($atts['before']);
@@ -315,12 +325,23 @@ function getSettings(&$atts)
         if ($post__in)
         $atts['post__in'] =  explode(",",  $post__in);
         if ($post__not_in)
-        $atts['post__not_in'] = explode(",", $post__not_in);
+            $atts['post__not_in'] = explode(",", $post__not_in);
  
+        if ($tag__not_in)
+            $atts['tag__not_in'] = explode(",", $tag__not_in);
+
+        if ($category__not_in)
+            $atts['category__not_in'] = explode(",", $category__not_in);
+        if ($category__and)
+            $atts['category__and'] = explode(",", $category__and);
+       if ($category__not_in)
+            $atts['author__not_in'] = explode(",", $author__not_in);   
         if ($tag_slug__and)
-        $atts['tag_slug__and'] = explode(",", $tag_slug__and);
+             $atts['tag_slug__and'] = explode(",", $tag_slug__and);
         if ($tag_slug__in)
-        $atts['tag_slug__in'] = explode(",", $tag_slug__in);
+            $atts['tag_slug__in'] = explode(",", $tag_slug__in);
+        if ($tag__and)
+            $atts['tag__and'] = explode(",", $tag__and);
         if ($post_parent__in)
             $atts['post_parent__in'] = explode(",", $post_parent__in);
         if ($post_parent__not_in)

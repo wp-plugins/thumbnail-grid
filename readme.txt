@@ -19,7 +19,7 @@ Please be kind and rate this plugin. Everything helps!
 
 
 == Description ==
-Version 5.3
+Version 5.4
 
 Donations for extended support are appreciated but are never required!  
 
@@ -249,6 +249,10 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 3. Settings page - Settings for the Thumbnail Grid can be found under the Settings Menu
 
 == Changelog ==
+* =5.4 
+* Add missing javascript for autocenter
+* Fix autocenter when number of items in grid is less than can fit in content
+* Fix some of the __not_in code
 * =5.3
 * Grid now has a class for the page. This is only unique if there is only one grid on the page. 
 * Add new filter to modify the title 
