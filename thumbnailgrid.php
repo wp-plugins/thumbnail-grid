@@ -3,7 +3,7 @@
 Plugin Name: Featured Image Thumbnail Grid
 Plugin URI: http://www.shooflysolutions.com/premium-thumbnail-grid-wordpress-plugin/
 Description: Display Thumbnail Grid using Featured Images
-Version: 5.4
+Version: 5.5
 Author: A. R. Jones
 Author URI: http://shooflysolutions.com
 */
@@ -240,6 +240,7 @@ function defaults($atts)
         'tag__and' => '',               //display posts that contain all of these tags
         'post_parent__in' => '',        //Comma delimited list of parent id's to determine posts displayed (use for pages)
         'post_parent__not_in' => '',    //Comma delimited of parent id's to ignore
+        'target' => NULL,                 //Target
         'inclusive' => FALSE,           //Used with the before and after dates to make those dat
          
             ), $atts  );
@@ -288,6 +289,9 @@ function getSettings(&$atts)
         unset($atts['inclusive']);
         unset($atts['debug_query']); 
         unset($atts['aligngrid']);
+        unset($atts['target']);
+
+        
         if (!$atts) //if it's empty, use minimum attributes so that it works
         {
             $atts['imagesize'] = 'thumbnail';
@@ -357,6 +361,7 @@ function getSettings(&$atts)
         $settings->maxgridwidth = $maxgridwidth;
         $settings->imagesize = $imagesize;
         $settings->debug = $debug_query;
+        $settings->target = $target;
         $griditemstyle = "";
         if ($cellwidth)
             $griditemstyle .= "width:" . $cellwidth . ";";
@@ -395,7 +400,7 @@ function getSettings(&$atts)
         //Get the Image div container Style
         $settings->postimgstyle =     $this->getStyleWithSize('sfly_tbgrid_postimagediv_style', $settings->height, $settings->width);
         $settings->postimgclass = $this->getClass('sfly_tbgrid_postimagediv_class', 'postimage');
-           
+        
         return $settings;
     }
 function thumbnailgrid_function($atts) {
@@ -436,7 +441,8 @@ function thumbnailgrid_function($atts) {
       
         //Returns content that displays under the title text
         $thumb->extra = apply_filters('sfly_tbgrid_extra_info', '');
-        $thumb->target = ''; //only used for obsolete link thumbnails
+        $thumb->target = $settings->target;
+
         //get the image id
         $thumb->image_id = get_post_thumbnail_id(); 
         //get the url     
@@ -464,23 +470,28 @@ function thumbnailgrid_function($atts) {
 	    */
 public function theThumbnail($settings, $thumb)
 {
+
+           $target = '';
+        if ($thumb->target)
+       
+            $target = ' target="' .$thumb->target .'"';
+     
         
-        if ($thumb->target != '')
-        {
-            $thumb->target = ' target="' .$target .'"';
-        }
+        
+        $link = ' href="' .$thumb->permalink . '" ' .
+            'title="' . $thumb->title .'" ' .  
+             $target;
             
         if ($thumb->image_url)
-            $thumbnail = '<img '. $settings->imageclass .' src="' .$thumb->image_url .'"' .$settings->imagestyle . '/>';
+            $thumbnail = '<img alt="' . $thumb->title . '" ' . $settings->imageclass .' src="' .$thumb->image_url .'"' .$settings->imagestyle . '/>';
         else
             $thumbnail = '<div ' . $settings->imagestyle .'></div>';
  
         $ret = '<div ' . $settings->griditemclass .' ' .$settings->griditemstyle.'>'
             . '<div '.$settings->postimgclass .$settings->postimgstyle .'>
-        <a href="' .$thumb->permalink .'" title="' .$thumb->title .'"> ' .$thumbnail .'</a> 
+        <a '.$link .'> ' .$thumbnail .'</a> 
 	    </div>' . '<div ' . $settings->titleclass .' ' .$settings->titlestyle .'>
-        <a '. $settings->titlelinkstyle .' href="' .$thumb->permalink .'" title="' .$thumb->title .'"> ' .$thumb->title .'</a> 
-		       
+        <a '. $settings->titlelinkstyle . ' ' . $link . '>' .$thumb->title . '</a> 
 	    </div>' . $thumb->extra . '                    
         </div>';
         return $ret;

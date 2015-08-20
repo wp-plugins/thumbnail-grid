@@ -19,7 +19,7 @@ Please be kind and rate this plugin. Everything helps!
 
 
 == Description ==
-Version 5.4
+Version 5.5
 
 Donations for extended support are appreciated but are never required!  
 
@@ -249,6 +249,9 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 3. Settings page - Settings for the Thumbnail Grid can be found under the Settings Menu
 
 == Changelog ==
+* =5.5
+* Add ability to open links in new page, target shortcode (target ="_blank")
+* Fill in missing alt from links
 * =5.4 
 * Add missing javascript for autocenter
 * Fix autocenter when number of items in grid is less than can fit in content
