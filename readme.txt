@@ -249,6 +249,11 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 3. Settings page - Settings for the Thumbnail Grid can be found under the Settings Menu
 
 == Changelog ==
+* =5.6
+* Added post id data to thumbnail for javascript 
+* Fix default values
+* Fix missing id for thumbnail grid
+* Fix processing of boolean values
 * =5.5
 * Add ability to open links in new page, target shortcode (target ="_blank")
 * Fill in missing alt from links
@@ -273,7 +278,6 @@ Visit the Web Site (and the Support page on Wordpress) for more tips: http://www
 * Add ability to display posts created before or after a today.
 * Add code to enable dump of query (debug_query)* = 4.0
 * Add settings & setting page for loading style sheets in header or footer - option to load compressed style sheet.
-
 * = 3.1.1 
 * Remove nags.
 * = 3.1

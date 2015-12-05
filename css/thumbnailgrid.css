@@ -43,9 +43,10 @@ div.postimage-title a
     clear:both;
     display: block;
 }
-.thumbnailgridcontainer
+#thumbnailgridcontainer
 {
     display: inline-block;
+    max-width: 100%;
 }
-.thumbnailgridcontainer:after, .thumbnailgridcontainer:before, .thumbnailblock:after { content: "."; visibility: hidden; display: block; clear: both; height: 0; font-size: 0; }
+#thumbnailgridcontainer:after, #thumbnailgridcontainer:before, .thumbnailblock:after { content: "."; visibility: hidden; display: block; clear: both; height: 0; font-size: 0; }
 
